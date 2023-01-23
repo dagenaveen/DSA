@@ -1,0 +1,47 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+$primary-color: #e5e5e5;
+$secondary-color: #fbf9fa;
+
+// 320 px  - small mobiles.
+.main {
+  background: $secondary-color;
+  font-family: "Poppins", sans-serif;
+  padding: 0.5rem;
+  &__text {
+    color: #fd0054;
+  }
+  &__para {
+    color: #2b2024;
+  }
+}
+@mixin responsive($breakpt) {
+  @if $breakpt == desktop {
+    @media (max-width: 1000px) {
+      @content;
+    }
+  }
+  @if $breakpt == tablet {
+    @media (max-width: 800px) {
+      @content;
+    }
+  }
+  @if $breakpt == phone {
+    @media (max-width: 600px) {
+      @content;
+    }
+  }
+}
+*:not(.main__para, .main__text) {
+  background: $primary-color;
+  font-size: 93%;
+
+  @include responsive(desktop) {
+    font-size: 10rem;
+  }
+  @include responsive(tablet) {
+    font-size: 5rem;
+  }
+  @include responsive(phone) {
+    font-size: 0.3rem;
+  }
+}
